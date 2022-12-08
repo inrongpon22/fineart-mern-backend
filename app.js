@@ -109,7 +109,7 @@ app.get("/api/logout", (req, res) => {
 });
 
 // Authentication
-app.get(`${process.env.PORT}/auth`, authenticate, (req, res) => {});
+app.get("/api/auth", authenticate, (req, res) => {});
 
 //Run Server
 app.listen(port, () => {
