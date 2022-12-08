@@ -22,12 +22,12 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
-app.get("/", (req, res) => {
+app.get(`${process.env.PORT}/`, (req, res) => {
   res.send("Hello World");
 });
 
 // Registeration
-app.post("/register", async (req, res) => {
+app.post(`${process.env.PORT}/register`, async (req, res) => {
   try {
     // GET body or Data
     const username = req.body.username;
@@ -50,7 +50,7 @@ app.post("/register", async (req, res) => {
 });
 
 // Login user
-app.post("/login", async (req, res) => {
+app.post(`${process.env.PORT}/login`, async (req, res) => {
   try {
     const email = req.body.email;
     const password = req.body.password;
@@ -80,7 +80,7 @@ app.post("/login", async (req, res) => {
 });
 
 // Message
-app.post("/message", async (req, res) => {
+app.post(`${process.env.PORT}/message`, async (req, res) => {
   try {
     // GET body or Data
     const name = req.body.name;
@@ -103,13 +103,13 @@ app.post("/message", async (req, res) => {
 });
 
 // Logout page
-app.get("/logout", (req, res) => {
+app.get(`${process.env.PORT}/logout`, (req, res) => {
   res.clearCookie("jwt", { path: "/" });
   res.status(200).send("User logged out");
 });
 
 // Authentication
-app.get("/auth", authenticate, (req, res) => {});
+app.get(`${process.env.PORT}/auth`, authenticate, (req, res) => {});
 
 //Run Server
 app.listen(port, () => {
